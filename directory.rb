@@ -23,17 +23,15 @@ def input_students
 end
 
 def print(students)
-  @arr = []
-  students.select do |student|
-    if student[:name].scan(/[a-z]/).count < 12
-      @arr.push(student) 
-      puts "#{student[:name]} (#{student[:cohort]} cohort)"
-    end
+  index = 0 
+  while index < students.length 
+    puts "#{students[index][:name]} (#{students[index][:cohort]} cohort)"
+    index += 1 
   end 
 end
 
 def print_footer(students)
-  puts "Overall, we have #{students.count} great students and #{@arr.length} with less that 12 letters in their name"
+  puts "Overall, we have #{students.count} great students"
 end
 
 # Then we call the methods
