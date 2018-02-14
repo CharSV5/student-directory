@@ -1,4 +1,3 @@
-
 def print_header
   puts "The students of Villains Academy"
   puts "-------------"
@@ -26,7 +25,7 @@ end
 def print(students)
   @arr = []
   students.select do |student|
-    if student[:name].start_with?("a")
+    if student[:name].scan(/[a-z]/).count < 12
       @arr.push(student) 
       puts "#{student[:name]} (#{student[:cohort]} cohort)"
     end
@@ -34,7 +33,7 @@ def print(students)
 end
 
 def print_footer(students)
-  puts "Overall, we have #{students.count} great students and #{@arr.length} beginning with a"
+  puts "Overall, we have #{students.count} great students and #{@arr.length} with less that 12 letters in their name"
 end
 
 # Then we call the methods
