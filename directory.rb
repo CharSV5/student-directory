@@ -11,21 +11,29 @@ def input_students
   # get the first name
   name = gets.chomp
   # while the name is not empty, repeat this code
+
   while !name.empty? do
+    # ask for cohort
+    puts "What month did their cohort start?"
+    cohort = gets.chomp 
+      if cohort == ""
+        cohort = "november"
+      end 
+
     # add the student hash to the array
-    students << {name: name, cohort: :november}
+    students << {name: name, cohort: cohort }
     puts "Now we have #{students.count} students"
     # get another name from the user
+    puts "Enter another name of student"
     name = gets.chomp
   end
-  # return the array of students
-  students
+    students 
 end
 
 def print(students)
   index = 0 
   while index < students.length 
-    puts "#{students[index][:name]} (#{students[index][:cohort]} cohort)".center(45)
+    puts "#{students[index][:name]} (#{students[index][:cohort]} cohort)"
     index += 1 
   end 
 end
