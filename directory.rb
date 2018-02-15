@@ -42,7 +42,11 @@ def print(students)
 end
 
 def  print_footer(students)
-  puts "Overall, we have #{students.count} great students"
+  if students.length == 0
+    puts "There are no students"
+  else  
+    puts "Overall, we have #{students.count} great students"
+  end
 end
 
 def group_by_month(students)
@@ -60,4 +64,7 @@ students = input_students
 print_header
 print(students)
 print_footer(students)
-group_by_month(students)
+
+if students.length > 0
+  group_by_month(students)
+end
