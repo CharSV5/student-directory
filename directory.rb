@@ -51,22 +51,29 @@ def  print_footer(students)
   end
 end
 
-def group_by_month(students)
-  puts "Which month would you like to group by"
-  month = gets.chomp
-  # select the students from the chosen month
-  st = students.select {|student| student[:cohort] == month}
-  puts "In the #{month} cohort:"
-  # display each name from chosen cohort
-  st.each {|student| puts student[:name]}
-end 
-
-# Then we call the methods
-students = input_students
-print_header
-print(students)
-print_footer(students)
-
-if students.length > 0
-  group_by_month(students)
+def interactive_menu
+  students = []
+  loop do
+    # print menu and ask user what to do
+    puts "1. Input the students"
+    puts "2. Show the students"
+    puts "9. Exit"
+    # read input and save into variable
+    selection = gets.chomp
+    # do what the user has asked
+    case selection
+    when "1"
+      students = input_students
+    when "2"
+      print_header
+      print(students)
+      print_footer(students) 
+    when "9"
+      exit
+    else
+      puts "I don't know what you meant, try again"
+    end
+  end
 end
+
+interactive_menu
