@@ -36,20 +36,28 @@ def input_students
 end
 
 def print(students)
-  index = 0 
-  while index < students.length 
-    puts "#{students[index][:name]} (#{students[index][:cohort]} cohort)"
-    index += 1 
-  end 
+  students.each do |student|
+    puts "#{student[:name]} (#{student[:cohort]} cohort)"
+  end
 end
 
-def print_footer(students)
+def  print_footer(students)
   puts "Overall, we have #{students.count} great students"
 end
+
+def group_by_month(students)
+  puts "Which month would you like to group by"
+  month = gets.chomp
+  # select the students from the chosen month
+  st = students.select {|student| student[:cohort] == month}
+  puts "In the #{month} cohort:"
+  # display each name from chosen cohort
+  st.each {|student| puts student[:name]}
+end 
 
 # Then we call the methods
 students = input_students
 print_header
 print(students)
 print_footer(students)
-
+group_by_month(students)
