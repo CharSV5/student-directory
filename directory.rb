@@ -44,6 +44,8 @@ end
 def  print_footer(students)
   if students.length == 0
     puts "There are no students"
+  elsif students.length == 1
+    puts "Overall, we have #{students.count} great student"
   else  
     puts "Overall, we have #{students.count} great students"
   end
