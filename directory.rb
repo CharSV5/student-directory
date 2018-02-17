@@ -1,4 +1,4 @@
-@students = []
+@students = [] 
 
 def print_header
   puts "The students of Villains Academy"
@@ -110,7 +110,7 @@ def load_students(filename = "students.csv")
   file.close
 end
 
-def try_load_students(filename = "students.csv")
+def try_load_students
   filename = ARGV.first
   return if filename.nil?
   if File.exists?(filename) 
