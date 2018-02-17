@@ -18,21 +18,22 @@ def input_students
       if cohort == ""
         cohort = "november"
       end
-
-    # add the student hash to the array
+      # add the student hash to the array
     add_to_array(name, cohort)
-
-    if @students.length == 1
-      puts "Now we have #{@students.count} student"
-    else
-      puts "Now we have #{@students.count} students"
-    end
-    # get another name from the user
+    response
     puts "Enter another name of student"
     name = gets.chomp
   end
     @students
 end
+
+def response
+   if @students.length == 1
+      puts "Now we have #{@students.count} student"
+    else
+      puts "Now we have #{@students.count} students"
+    end
+end 
 
 def print_students_list
   @students.each do |student|
@@ -104,21 +105,21 @@ end
 def load_students(filename = "students.csv")
   file = File.open(filename, "r")
   file.readlines.each do |line|
-  name, cohort = line.chomp.split(",")
-  add_to_array(name, cohort)    
+  name, cohort = line.chomp.split(',')
+    @students << {name: name, cohort: cohort.to_sym}
   end
   file.close
 end
 
 def try_load_students
-  filename = ARGV.first
+  filename = ARGV.first# first argument from the command line
   return if filename.nil?
-  if File.exists?(filename) 
+  if File.exists?(filename) # if it exists
     load_students(filename)
-      puts "Loaded #{@students.count} from #{filename}"
-  else
-    puts "Sorry, #{filename} doesn't exist"
-    exit
+     puts "Loaded #{@students.count} from #{filename}"
+  else # if it doesn't exist
+    puts "Sorry, #{filename} doesn't exist."
+    exit # quit the program
   end
 end
 
@@ -128,7 +129,6 @@ end
 
 try_load_students
 interactive_menu
-
 
 
 
