@@ -10,7 +10,11 @@ def input_students
   puts "To finish, just hit return twice"
   # get the first name
   name = STDIN.gets.chomp
-  # while the name is not empty, repeat this code
+  input_students_loop(name)
+    @students
+end
+
+def input_students_loop(name)
   while !name.empty? do
     # ask for cohort
     puts "What month did their cohort start?"
@@ -24,7 +28,6 @@ def input_students
     puts "Enter another name of student"
     name = gets.chomp
   end
-    @students
 end
 
 def response
