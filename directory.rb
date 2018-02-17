@@ -77,6 +77,7 @@ def show_students
 end
 
 def process(selection)
+  puts "You chose option #{selection}"
   case selection
     when "1"
       @students = input_students
